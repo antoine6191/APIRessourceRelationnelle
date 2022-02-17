@@ -68,7 +68,7 @@ CREATE TABLE ressources(
 
 CREATE TABLE commits(
     id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    post datetime,
+    post datetime DEFAULT CURRENT_TIMESTAMP,
     texte varchar(250),
     createdAt datetime DEFAULT CURRENT_TIMESTAMP,
     updatedAt datetime DEFAULT CURRENT_TIMESTAMP,
@@ -258,3 +258,20 @@ Bonus : cuisiner en famille en amont du repas.',
 amis. Assumez votre choix et notez les émotions ressenties.',
         3, 5, 3
     );
+
+INSERT INTO `commits` 
+    (`id`, `post`, `texte`, `createdAt`, `updatedAt`, `user_id`, `ressource_id`) VALUES 
+    (NULL, '2022-02-17 10:54:51.000000', 'test', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '1', '3'), 
+    (NULL, '2022-02-17 10:54:51.000000', 'test2', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '3', '3'),
+    (NULL, '2022-02-17 10:54:51.000000', 'test2', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '4', '2'),
+    (NULL, '2022-02-17 10:54:51.000000', 'test2', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '4', '3');
+
+
+INSERT INTO `favoris` 
+    (`id`, `favoris`, `createdAt`, `updatedAt`, `user_id`, `ressource_id`) VALUES 
+    (NULL, '1', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '1', '3'), 
+    (NULL, '1', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '1', '2'),
+    (NULL, '1', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '3', '2'),
+    (NULL, '1', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '3', '3'),
+    (NULL, '1', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '2', '1'),
+    (NULL, '1', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '2', '2');
