@@ -262,14 +262,79 @@ response [
 ]
 
 localhost:3000/admin/roles
+response [
+    {
+        "id": 1,
+        "libelle": "citoyen",
+        "createdAt": "2022-02-17T15:53:31.000Z",
+        "updatedAt": "2022-02-17T15:53:31.000Z"
+    },
+    {
+        "id": 2,
+        "libelle": "admin",
+        "createdAt": "2022-02-17T15:53:31.000Z",
+        "updatedAt": "2022-02-17T15:53:31.000Z"
+    }
+]
 
+localhost:3000/admin/delete-user'
+body {
+        "userId": 4
+}
 
-localhost:3000/admin/delete-user', userController.postDeleteUser) //
-localhost:3000/admin/delete-ressource', ressourceController.postDeleteRessource) //
-localhost:3000/admin/add-categorie', categorieController.postCategorie) //
-localhost:3000/admin/delete-categorie', categorieController.postDeleteCategorie) //
-localhost:3000/admin/add-relation_type', relation_typeController.postRelation_type) //
-localhost:3000/admin/add-ressource_type', ressource_typeController.postRessource_type) //
-localhost:3000/admin/delete-relation_type', relation_typeController.postDeleteRelation_type) //
-localhost:3000/admin/delete-ressource_type', ressource_typeController.postDeleteRessource_type) //
-localhost:3000/admin/delete-commit', commitController.postDeleteCommit)
+localhost:3000/admin/delete-ressource
+body {
+        "ressourceId": 4
+}
+
+localhost:3000/admin/add-categorie'
+body {
+    "label": 
+}
+response {
+    "id": 14,
+    "label": "test",
+    "updatedAt": "2022-02-17T14:56:44.811Z",
+    "createdAt": "2022-02-17T14:56:44.811Z"
+}
+
+localhost:3000/admin/delete-categorie
+body {
+        "categorieId": 14
+}
+
+localhost:3000/admin/add-relation_type
+body { 
+        "label": "test"
+}
+response {
+    "id": 7,
+    "label": "test",
+    "updatedAt": "2022-02-17T15:11:49.847Z",
+    "createdAt": "2022-02-17T15:11:49.847Z"
+}
+
+localhost:3000/admin/add-ressource_type
+body { 
+        "label": "test"
+} response {
+    "id": 9,
+    "label": "test",
+    "updatedAt": "2022-02-17T15:12:39.101Z",
+    "createdAt": "2022-02-17T15:12:39.101Z"
+}
+
+localhost:3000/admin/delete-relation_type
+body {       
+    "relation_typeId": 7
+}
+
+localhost:3000/admin/delete-ressource_type
+body {       
+    "ressource_typeId": 9
+}
+
+localhost:3000/admin/delete-commit
+body {
+    "commitId": 3
+}

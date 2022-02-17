@@ -36,8 +36,8 @@ exports.postRessource_type = (req, res, next) => {
 }
 
 exports.postDeleteRessource_type = (req, res, next) => {
-    const Ressource_typeId = req.body.Ressource_typeId
-    Ressource_type.destroy({ where: { id: Ressource_typeId}})
+    const ressource_typeId = req.body.ressource_typeId
+    Ressource_type.destroy({ where: { id: ressource_typeId}})
       .then(result => {
         console.log('DESTROYED Ressource_type');
         res.json(result);
