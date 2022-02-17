@@ -1,3 +1,7 @@
+lancer le projet:
+- npm install
+- npm start
+
 CITOYEN
 ////////////////////GET////////////////////
 localhost:3000/user/:userId
