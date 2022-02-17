@@ -11,7 +11,9 @@ DROP TABLE IF EXISTS ressource_relationelle.categories;
 
 CREATE TABLE roles(
     id int PRIMARY KEY,
-    libelle varchar(50)    
+    libelle varchar(50),
+    createdAt datetime DEFAULT CURRENT_TIMESTAMP,
+    updatedAt datetime DEFAULT CURRENT_TIMESTAMP  
 );
 
 CREATE TABLE users(

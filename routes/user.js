@@ -10,7 +10,7 @@ const favorisController = require('../controllers/favoris')
 const router = express.Router();
 
 router.get('/user/:userId', userController.getUser) //
-router.post('/user/add-user', userController.postUser) //
+router.post('/add-user', userController.postUser) //
 
 router.get('/ressource_types', ressource_typeController.getRessource_types) //
 //router.get('/ressource_types/:ressource_typeId', ressource_typeController.getRessource_type) //
@@ -18,7 +18,7 @@ router.get('/relation_types', relation_typeController.getRelation_types) //
 //router.get('/relation_types/:relation_typeId', relation_typeController.getRelation_type) //
 router.get('/ressources', ressourceController.getRessources) //
 router.get('/ressources/:ressourceId', ressourceController.getRessource) //
-router.post('/ressources/add-ressource', ressourceController.postRessource) //
+router.post('/add-ressource', ressourceController.postRessource) //
 router.get('/ressources/:ressourceId', ressourceController.getRessource) //
 router.get('/commits/:ressourceId', commitController.getCommitsByRessource) //
 router.post('/add-commit', commitController.postCommit)
