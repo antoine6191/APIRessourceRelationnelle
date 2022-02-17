@@ -1,4 +1,4 @@
-const Ressource_type = require('../models/Ressource_type');
+const Ressource_type = require('../models/ressource_type');
 
 exports.getRessource_types = (req, res, next) => {
     Ressource_type.findAll()
