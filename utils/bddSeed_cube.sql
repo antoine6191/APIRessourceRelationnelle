@@ -1,3 +1,4 @@
+CREATE DATABASE IF NOT EXISTS ressource_relationelle;
 use ressource_relationelle;
 
 DROP TABLE IF EXISTS ressource_relationelle.favoris;

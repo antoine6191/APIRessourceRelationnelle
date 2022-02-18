@@ -277,6 +277,9 @@ response [
     }
 ]
 
+////////////////////fin GET////////////////////
+////////////////////POST////////////////////
+
 localhost:3000/admin/delete-user'
 body {
         "userId": 4
@@ -338,3 +341,4 @@ localhost:3000/admin/delete-commit
 body {
     "commitId": 3
 }
+////////////////////fin POST////////////////////
