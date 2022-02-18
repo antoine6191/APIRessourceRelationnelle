@@ -3,8 +3,8 @@ use ressource_relationelle;
 
 DROP TABLE IF EXISTS ressource_relationelle.favoris;
 DROP TABLE IF EXISTS ressource_relationelle.commits;
-DROP TABLE IF EXISTS ressource_relationelle.users;
 DROP TABLE IF EXISTS ressource_relationelle.ressources;
+DROP TABLE IF EXISTS ressource_relationelle.users;
 DROP TABLE IF EXISTS ressource_relationelle.roles;
 DROP TABLE IF EXISTS ressource_relationelle.ressource_types;
 DROP TABLE IF EXISTS ressource_relationelle.relation_types;
@@ -64,9 +64,12 @@ CREATE TABLE ressources(
     categorie_id int,
     relation_types_id int,
     ressource_types_id int,
+    user_id int,
     FOREIGN KEY (categorie_id) REFERENCES categories(id),
     FOREIGN KEY (relation_types_id) REFERENCES relation_types(id),
-    FOREIGN KEY (ressource_types_id) REFERENCES ressource_types(id)
+    FOREIGN KEY (ressource_types_id) REFERENCES ressource_types(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+
 );
 
 CREATE TABLE commits(
@@ -135,18 +138,18 @@ VALUES (1, 'activité/jeu à réaliser'),
     (8, 'vidéo');
 
 
-INSERT INTO ressources(id, titre, description, categorie_id, relation_types_id, ressource_types_id)
+INSERT INTO ressources(id, titre, description, categorie_id, relation_types_id, ressource_types_id, user_id)
 VALUES (
         1, 
         'reconnaitre ses émotions', 
         'L’objectif de cet exercice est de reconnaître les émotions sur soi. Pour ce faire, nous noterons dans un petit cahier prévu à cet effet, à des moments prédéfinis de la journée, comment nous nous sentons émotionnellement. Quelle émotion nous habite ? Cette émotion est-elle positive ou négative ? Avec quelle force ? Quel a été le facteur déclencheur ? Nous répèterons la démarche durant une semaine. Après une semaine, reprenons nos notes et identifions avec un marqueur les émotions que nous ressentons le plus souvent, si elles sont positives ou négatives et quel type de facteur déclencheur est observé le plus souvent. Pour conclure, demandons-nous si nos émotions auraient pu être différentes et si la situation en aurait été changée.', 
-        13, 1, 5
+        13, 1, 5,1
     ),
     (
         2,
         'Emission ARTE : Travail | Travail, Salaire, Profit',
         'https://www.youtube.com/watch?v=Dpzv8H16R-Q',
-        5, 4, 8
+        5, 4, 8,1
     ),
     (
         3,
@@ -244,7 +247,7 @@ passions », Korichi M. (2000, p.113), mais sans rejeter toute possibilité d’
 • [9] Loi n° 2002-73 du 17 janvier 2002 de modernisation sociale, J.O. n°15 daté du 18 janvier 2002, p. 1008.
 • [10] Le premier à avoir affirme? que « l’individu en foule diffère de l’individu isole? » et souligne? les risques d’emportement associés aux dynamiques collectifs, est peut- être Gustave Le Bon (1895, p.11).
 Source : https://www.cairn.info/revue-@grh-2013-1-page-45.htm'
-    , 5, 4, 2
+    , 5, 4, 2,1
     ),
     (
         4,
@@ -252,14 +255,14 @@ Source : https://www.cairn.info/revue-@grh-2013-1-page-45.htm'
         'Carte défi : pendant une semaine, passer un repas en famille par jour, à table sans écrans (télévision,
 smartphone, tablette, etc.).
 Bonus : cuisiner en famille en amont du repas.',
-        7, 3, 3
+        7, 3, 3,1
     ),
     (
         5,
         'Partager des vrais moments de vie de famille',
         'Carte défi : lors de votre prochaine sortie, refuser de boire de l’alcool et observer les réactions de vos
 amis. Assumez votre choix et notez les émotions ressenties.',
-        3, 5, 3
+        3, 5, 3,1
     );
 
 INSERT INTO `commits` 
