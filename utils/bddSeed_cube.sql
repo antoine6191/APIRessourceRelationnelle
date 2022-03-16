@@ -1,6 +1,7 @@
 CREATE DATABASE IF NOT EXISTS ressource_relationelle;
 use ressource_relationelle;
 
+DROP TABLE IF EXISTS ressource_relationelle.statistiques;
 DROP TABLE IF EXISTS ressource_relationelle.favoris;
 DROP TABLE IF EXISTS ressource_relationelle.commits;
 DROP TABLE IF EXISTS ressource_relationelle.ressources;
@@ -64,7 +65,8 @@ CREATE TABLE ressources(
     categorie_id int,
     relation_types_id int,
     ressource_types_id int,
-    user_id int,
+    counterview int,
+    user_id int DEFAULT 0,
     FOREIGN KEY (categorie_id) REFERENCES categories(id),
     FOREIGN KEY (relation_types_id) REFERENCES relation_types(id),
     FOREIGN KEY (ressource_types_id) REFERENCES ressource_types(id),
@@ -92,6 +94,15 @@ CREATE TABLE favoris(
     user_id int,
     ressource_id int,
     FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (ressource_id) REFERENCES ressources(id)
+);
+
+CREATE TABLE statistiques(
+    id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nb_vues int,
+    createdAt datetime DEFAULT CURRENT_TIMESTAMP,
+    updatedAt datetime DEFAULT CURRENT_TIMESTAMP,
+    ressource_id int,
     FOREIGN KEY (ressource_id) REFERENCES ressources(id)
 );
 
@@ -281,3 +292,18 @@ INSERT INTO `favoris`
     (NULL, '1', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '3', '3'),
     (NULL, '1', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '2', '1'),
     (NULL, '1', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '2', '2');
+
+
+
+INSERT INTO `statistiques` 
+    (`id`, `nb_vues`, `createdAt`, `updatedAt`, `ressource_id`) VALUES 
+    (NULL, '45', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '3'), 
+    (NULL, '54', '2022-07-01T14:59:55.711Z', CURRENT_TIMESTAMP, '3'),
+    (NULL, '60', '2023-07-01T14:59:55.711Z', CURRENT_TIMESTAMP, '3'),
+    (NULL, '10', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '2'),
+    (NULL, '22', '2022-07-01T14:59:55.711Z', CURRENT_TIMESTAMP, '2'),
+    (NULL, '30', '2022-07-07T14:59:55.711Z', CURRENT_TIMESTAMP, '2'),
+    (NULL, '46', '2022-07-09T14:59:55.711Z', CURRENT_TIMESTAMP, '2'),
+    (NULL, '23', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '1'),
+    (NULL, '30', '2022-07-01T14:59:55.711Z', CURRENT_TIMESTAMP, '1'),
+    (NULL, '33', '2022-08-05T15:59:55.711Z', CURRENT_TIMESTAMP, '1');
