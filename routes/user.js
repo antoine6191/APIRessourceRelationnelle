@@ -18,6 +18,7 @@ router.get('/ressource_types', ressource_typeController.getRessource_types) //
 router.get('/relation_types', relation_typeController.getRelation_types) //
 //router.get('/relation_types/:relation_typeId', relation_typeController.getRelation_type) //
 router.get('/categorie/:categorieId', categorieController.getCategorieById)
+router.get('/categories', categorieController.getCategories) 
 router.get('/ressources', ressourceController.getRessources) //
 router.get('/ressources/:ressourceId', ressourceController.getRessource) //
 router.post('/add-ressource', ressourceController.postRessource) //

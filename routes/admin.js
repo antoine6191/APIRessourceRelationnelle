@@ -8,6 +8,7 @@ const commitController = require('../controllers/commit')
 const ressource_typeController = require('../controllers/ressource_type')
 const relation_typeController = require('../controllers/relation_type')
 const roleController = require('../controllers/role')
+const statistiqueController = require('../controllers/statistique')
 const router = express.Router();
 
 router.get('/users', userController.getUsers) //
@@ -22,5 +23,7 @@ router.post('/delete-ressource_type', ressource_typeController.postDeleteRessour
 router.post('/delete-commit', commitController.postDeleteCommit)
 
 router.get('/roles', roleController.getRoles) //
+router.get('/statistiques', statistiqueController.getStatistiques) //
+router.get('/statistiques/:ressourceId', statistiqueController.getStatistiquesByRessourceId) //
 
 module.exports = router;
