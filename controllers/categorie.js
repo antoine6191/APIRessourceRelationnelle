@@ -10,7 +10,7 @@ exports.getCategories = (req, res, next) => {
 }
 
 
-exports.getCategorie = (req, res, next) => {
+exports.getCategorieById = (req, res, next) => {
     Categorie.findByPk(req.params.categorieId)
         .then(result =>{
             console.log(result)
