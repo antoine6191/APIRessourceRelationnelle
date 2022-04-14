@@ -21,7 +21,6 @@ exports.getCategorieById = (req, res, next) => {
 
 
 exports.postCategorie = (req, res, next) => {
-    
     const categorie = new Categorie({
         label: req.body.label
     })
