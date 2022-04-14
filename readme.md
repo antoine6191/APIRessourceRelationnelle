@@ -1,6 +1,25 @@
+# Configuration de l'API
+
+## Variables d'environnement
+
+Le fichier .env doit se trouver à la racine du projet. Il doit contenir les variables suivantes :
+* DB_HOST : adresse IP ou nom DNS du serveur de base de données
+* DB_USER : nom de l'utilisateur qui se connecte à la base de données
+* DB_PASSWORD : mot de passe de l'utilisateur de connexion à la base
+* DB_NAME : nom de la base de données
+* DB_CONTEXT : nom du moteur de base de données à utiliser pour Sequelize
+* SERVICE_PORT : port en écoute de l'API
+
+Les variables d'environnement doivent être écrites en majuscule avec des underscores '_'. Le symbole '=' doit coller le nom et la valeur. Les valeurs ne sont pas comprises entre cottes, quelque soit leur type. Chaque variable doit être sur une ligne.
+
+
+# Commandes de lancement
+
 lancer le projet:
 - npm install
 - npm start
+
+# Schéma de données
 
 CITOYEN
 ////////////////////GET////////////////////
