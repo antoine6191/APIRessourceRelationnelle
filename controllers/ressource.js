@@ -26,12 +26,14 @@ exports.postRessource = (req, res, next) => {
     const categorieId = req.body.categorieId;
     const relation_typeId = req.body.relation_typeId;
     const ressource_typeId = req.body.ressource_typeId;
+    const user_id = req.body.user_id;
     const ressource = new Ressource({
         titre: titre,
         description: description,
-        categorieId: categorieId,
-        relation_typeId: relation_typeId,
-        ressource_typeId: ressource_typeId
+        categorie_id: categorieId,
+        relation_types_id: relation_typeId,
+        ressource_types_id: ressource_typeId,
+        user_id: user_id
     })
     ressource
     .save()

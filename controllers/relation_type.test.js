@@ -1,6 +1,6 @@
 const Axios = require('axios');
 const Relation_type = require('../models/relation_type')
-let nomTest = 'ressource_type';
+let nomTest = 'relation_type';
 let i = 0;
 
 test(nomTest+i+1+' : récupérer le nombre de type de relation du user ', async () => {

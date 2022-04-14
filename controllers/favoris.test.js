@@ -11,7 +11,7 @@ test(nomTest+i+1+' : récupérer le nombre de favoris du user '+userId, async ()
 });
 
 
-test(nomTest+i+1+' : poster un nouveau commentaire', async () => {
+test(nomTest+i+1+' : ajouter une ressource en favoris', async () => {
     const response = await Axios.post('http://localhost:3000/add-favoris',{
         favoris: true,
         user_id: 4,
@@ -21,7 +21,7 @@ test(nomTest+i+1+' : poster un nouveau commentaire', async () => {
     expect(response.data.favoris).toEqual(true);
 });
 
-test(nomTest+i+1+' : delete un nouveau commentaire', async () => {
+test(nomTest+i+1+' : delete un favoris', async () => {
     const favorisId = Favoris.destroy({ where: { user_id: 4}})
     console.log(await favorisId)
     expect(await favorisId).toEqual(1);

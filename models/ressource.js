@@ -4,6 +4,7 @@ const sequelize = require('../utils/database');
 const categorie = require('./categorie');
 const relation_type = require('./relation_type');
 const ressource_type = require('./ressource_type');
+const user = require('./user');
 
 const ressource = sequelize.define('ressource', {
   id: {
@@ -37,6 +38,13 @@ const ressource = sequelize.define('ressource', {
       key: 'id'
     }
   },
+  user_id: {
+    type: Sequelize.INTEGER,
+    references: {
+      model: user,
+      key: 'id'
+    }
+  }
 });
 
 //ressource.hasOne(categorie)
