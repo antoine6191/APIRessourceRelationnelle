@@ -22,6 +22,6 @@ test(nomTest+i+1+' : poster un nouveau commentaire', async () => {
 
 test(nomTest+i+1+' : delete un nouveau commentaire', async () => {
     const categorieId = Commit.destroy({ where: { texte: "testtesttest"}})
-    console.log(await categorieId)
+    //console.log(await categorieId)
     expect(await categorieId).toEqual(1);
 });

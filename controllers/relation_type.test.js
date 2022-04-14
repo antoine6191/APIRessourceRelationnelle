@@ -19,6 +19,6 @@ test(nomTest+i+1+' : poster un nouveau type de relation', async () => {
 
 test(nomTest+i+1+' : delete un nouveau type de relation', async () => {
     const relation_typeId = Relation_type.destroy({ where: { label: 'test'}})
-    console.log(await relation_typeId)
+    //console.log(await relation_typeId)
     expect(await relation_typeId).toEqual(1);
 });

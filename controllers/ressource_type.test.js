@@ -19,6 +19,6 @@ test(nomTest+i+1+' : poster un nouveau type de ressource', async () => {
 
 test(nomTest+i+1+' : delete un nouveau type de ressource', async () => {
     const ressource_typeId = Ressource_type.destroy({ where: { label: 'test'}})
-    console.log(await ressource_typeId)
+    //console.log(await ressource_typeId)
     expect(await ressource_typeId).toEqual(1);
 });

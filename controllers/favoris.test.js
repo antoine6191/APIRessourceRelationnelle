@@ -23,6 +23,6 @@ test(nomTest+i+1+' : ajouter une ressource en favoris', async () => {
 
 test(nomTest+i+1+' : delete un favoris', async () => {
     const favorisId = Favoris.destroy({ where: { user_id: 4}})
-    console.log(await favorisId)
+    //console.log(await favorisId)
     expect(await favorisId).toEqual(1);
 });
