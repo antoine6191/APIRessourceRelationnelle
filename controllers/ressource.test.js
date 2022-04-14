@@ -6,13 +6,11 @@ let i = 0;
 
 test(nomTest+i+1+' : récupérer le nombre de type de ressource', async () => {
     const response = await Axios.get('http://localhost:3000/ressources')
-    //console.log(response)
     expect(response.data.length).toEqual(5);
 });
 
 test(nomTest+i+1+' : récupérer la ressource n° '+ressourceId, async () => {
     const response = await Axios.get('http://localhost:3000/ressources/'+ressourceId)
-    //console.log(response)
     expect(response.data.titre).toEqual('Le rire au travail et l’éthique');
 });
 
@@ -25,12 +23,10 @@ test(nomTest+i+1+' : poster un nouvelle ressource', async () => {
         ressource_types_id: 5,
         user_id: 1
     })
-    //console.log(response.data)
     expect(response.data.relation_types_id).toEqual("test");
 });
 
 test(nomTest+i+1+' : delete un nouveau type de ressource', async () => {
     const ressourceId = Ressource.destroy({ where: { titre: 'test'}})
-    //console.log(await ressourceId)
     expect(await ressourceId).toEqual(1);
 });
