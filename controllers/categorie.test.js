@@ -10,7 +10,7 @@ test(nomTest+i+1+' : récupérer la catégorie ayant l id '+categorieId, async (
     expect(response.data.label).toEqual("communication");
 });
 
-test(nomTest+i+1+' : poster une nouvelle catégrie', async () => {
+test(nomTest+i+1+' : poster une nouvelle catégorie', async () => {
     const response = await Axios.post('http://localhost:3000/admin/add-categorie',{
         label:"test"
     })
@@ -18,7 +18,7 @@ test(nomTest+i+1+' : poster une nouvelle catégrie', async () => {
     expect(response.data.label).toEqual("test");
 });
 
-test(nomTest+i+1+' : delete une nouvelle catégrie', async () => {
+test(nomTest+i+1+' : delete une nouvelle catégorie', async () => {
     const categorieId = Categorie.destroy({ where: { label: "test"}})
     //console.log(await categorieId)
     expect(await categorieId).toEqual(1);
