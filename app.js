@@ -1,7 +1,11 @@
 const path = require('path');
+require('dotenv').config();
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const adminRoutes = require('./routes/admin');
+const userRoutes = require('./routes/user');
+const sequelize = require('./utils/database');
 
 const app = express();
 
@@ -18,10 +22,6 @@ app.use((req, res, next) => {
     next();
 })
 
-const adminRoutes = require('./routes/admin');
-const userRoutes = require('./routes/user');
-const sequelize = require('./utils/database');
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -32,7 +32,7 @@ sequelize
     .sync()
     //.sync({ force: true })
     .then(e => {
-        app.listen(3000)
+        app.listen(process.env.SERVICE_PORT)
     }  
 )
   // 
