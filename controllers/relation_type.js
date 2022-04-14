@@ -35,6 +35,7 @@ exports.postRelation_type = (req, res, next) => {
     })
 }
 
+
 exports.postDeleteRelation_type = (req, res, next) => {
     const relation_typeId = req.body.relation_typeId
     Relation_type.destroy({ where: { id: relation_typeId}})
