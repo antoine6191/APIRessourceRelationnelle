@@ -11,11 +11,6 @@ const sequelize = new Sequelize({
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   database: process.env.DB_NAME,
-<<<<<<< HEAD
-
-=======
-  //debug: true
->>>>>>> 5b668de15e302f25f8bade4fa52d385d7921b17e
 });
 
 module.exports = sequelize;

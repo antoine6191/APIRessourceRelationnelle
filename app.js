@@ -37,15 +37,8 @@ app.use('/', userRoutes)
 sequelize
     .sync()
     //.sync({ force: true })
-<<<<<<< HEAD
     .then(() => {
         app.listen(process.env.SERVICE_PORT, console.log("Service running on port "+process.env.SERVICE_PORT));
     })
     .catch(e=>console.error(e));
-=======
-    .then(e => {
-        app.listen(process.env.SERVICE_PORT)
-    }  
-)
->>>>>>> 5b668de15e302f25f8bade4fa52d385d7921b17e
   // 
