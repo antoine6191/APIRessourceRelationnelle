@@ -22,7 +22,6 @@ router.get('/categories', categorieController.getCategories)
 router.get('/ressources', ressourceController.getRessources) //
 router.get('/ressources/:ressourceId', ressourceController.getRessource) //
 router.post('/add-ressource', ressourceController.postRessource) //
-router.get('/ressources/:ressourceId', ressourceController.getRessource) //
 router.get('/commits/:ressourceId', commitController.getCommitsByRessource) //
 router.post('/add-commit', commitController.postCommit)
 router.get('/favoris/:user_id', favorisController.getFavorisByUser)
