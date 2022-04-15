@@ -15,9 +15,11 @@ Les variables d'environnement doivent être écrites en majuscule avec des under
 
 # Commandes de lancement
 
-lancer le projet:
-- npm install
-- npm start
+```npm install```
+Installe les dépendances
+
+```npm start```
+Lance le projet
 
 # Schéma de données
 

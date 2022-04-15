@@ -1,11 +1,17 @@
-const Sequelize = require('sequelize');
+const {Sequelize} = require('sequelize');
 require('dotenv').config();
 
-const sequelize = new Sequelize('ressource_relationelle', process.env.DB_USER, process.env.DB_PASSWORD, {
+// --------------------------------------------------------
+
+// Connexion à la base de données à partir de variables d'environnement
+const sequelize = new Sequelize({
+  password: process.env.DB_PASSWORD,
+  username: process.env.DB_USER,
   dialect: process.env.DB_CONTEXT,
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
-  database: process.env.DB_NAME
+  database: process.env.DB_NAME,
+
 });
 
 module.exports = sequelize;
