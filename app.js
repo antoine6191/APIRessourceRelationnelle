@@ -64,7 +64,7 @@ is_ready.then(()=>{
         .sync({force: false})
         .then(() => {
             // Utilisation du mode HTTP
-            app.listen(env.SERVICE_PORT, console.log("[INFO] HTTP service running on port "+env.SERVICE_HTTP_PORT));
+            app.listen(env.SERVICE_HTTP_PORT, console.log("[INFO] HTTP service running on port "+env.SERVICE_HTTP_PORT));
 
             // Paramétrage du HTTPS
             if (env.TLS_KEY_FILE != undefined && env.TLS_CERT_FILE != undefined) {
@@ -82,8 +82,6 @@ is_ready.then(()=>{
                     try {
                         const tls_key = fs.readFileSync(env.TLS_KEY_FILE).toString();
                         const tls_cert = fs.readFileSync(env.TLS_CERT_FILE).toString();
-                        //console.log("[DEBUG] Certificat :",tls_cert);
-                        //console.log("[DEBUG] Clef :",tls_key);
                         if (tls_cert != undefined && tls_key != undefined) {
                             resolve({
                                 key: tls_key,
@@ -93,23 +91,11 @@ is_ready.then(()=>{
                     } catch (e) {
                         reject("[ALERT] Impossible d'ouvrir le certificat ou la clef");
                     }
-                    /*
-                    const tls_key = fs.readFileSync(env.TLS_KEY_FILE,(err,data)=>{
-                        if(err) reject("[ALERT] Impossible d'ouvrir le fichier de clef ("+env.TLS_KEY_FILE+")");
-                        else return data;
-                    })
-                    const tls_cert = fs.readFileSync(env.TLS_CERT_FILE);*/
-                    if (tls_cert != undefined && tls_key != undefined) {
-                        resolve({
-                            key: tls_key,
-                            cert: tls_cert
-                        })
-                    } else reject("[ALERT] Le fichier de certificat ou de clef est absent");
                 });
-                
                 // Lancement du service HTTPS
                 is_tls_ready.then((tls)=>{
-                    https.createServer(app,tls).listen(env.SERVICE_HTTPS_PORT,()=>console.log("[INFO] : HTTPS service running on port "+env.SERVICE_HTTPS_PORT));
+                    console.log("[DEBUG]",tls);
+                    https.createServer(tls, app).listen(env.SERVICE_HTTPS_PORT,()=>console.log("[INFO] : HTTPS service running on port "+env.SERVICE_HTTPS_PORT));
                 }).catch((e)=>console.error(e));
             }
         })
