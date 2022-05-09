@@ -17,13 +17,17 @@ Les variables d'environnement doivent être écrites en majuscule avec des under
 Exemple :
 `DB_HOST=bdd.example.com`
 
-# Commandes de lancement
+## Prérequis
+* Docker
+* Docker Compose
 
-```npm install```
-Installe les dépendances
+## Architecture
+L'environnement se déploie à l'aide de Docker. Cet environnement est composé d'un conteneur pour la base de données, un conteneur pour l'API.
+Dans un premier temps, il faut construire les images Docker avec le Dockerfile. En suite, il faut configurer les variables d'environnement comme décrites plus haut. Enfin, on peut lancer les conteneurs.
+La configuration des variables d'environnement se fait directement dans le fichier `docker/docker-compose.yml`. La construction des images et conteneurs se fait par le lancement de la commande `docker-compose up -d` en tant que `root`.
 
-```npm start```
-Lance le projet
+## Gestion des certiticats
+Les certificats doivent être disposés dans le dossier `cert/`. Les droits en lecture doivent être données uniquement à l'utilisateur qui exécute les conteneurs, à savoir `root`. Les utilisateures *autres* ne doivent pas pouvoir lire le contenu de la clé privée.
 
 # Schéma de données
 

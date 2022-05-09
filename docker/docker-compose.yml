@@ -1,0 +1,54 @@
+version: "3.9"
+services:
+  api_bdd:
+    build:
+      context: ./
+      dockerfile: api_db_dockerfile
+    container_name: api_bdd
+    environment:
+      LC_COLLATE: fr_FR
+      LANG: french
+      POSTGRES_USER: api
+      POSTGRES_PASSWORD: mdppostgres
+      POSTGRES_HOST_AUTH_METHOD: md5
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - "api_bdd:/var/lib/postgresql/data/pgdata"
+    networks:
+      - api
+  api:
+    image: node
+    container_name: api
+    depends_on: 
+      - api_bdd
+    working_dir: /home/node/app
+    user: node
+    environment:
+      NODE_ENV: production
+      DB_CONTEXT: postgres
+      DB_HOST: api_bdd
+      DB_NAME: api
+      DB_USER: api
+      DB_PASSWORD: mdppostgres
+      SERVICE_HTTP_PORT: 80
+    volumes:
+      - "/home/louis/Documents/CESI/CUBE/back/APIRessourceRelationnelle:/home/node/app"
+    command: npm run run
+    networks:
+      - api
+  proxy:
+    build: ./proxy
+    container_name: proxy
+    networks:
+      - api
+    depends_on:
+      - api
+    volumes:
+      - "/home/louis/Documents/CESI/CUBE/back/proxy:/usr/local/etc/haproxy"
+    ports:
+      - "80:80"
+      - "443:443"
+volumes:
+  api_bdd:
+networks:
+  api:
