@@ -36,17 +36,17 @@ services:
     command: npm run run
     networks:
       - api
-  proxy:
-    build: ./proxy
-    container_name: proxy
-    networks:
-      - api
-    depends_on:
-      - api
-    volumes:
-      - "/home/louis/Documents/CESI/CUBE/back/proxy:/usr/local/etc/haproxy"
-    ports:
-      - "80:80"
+#  proxy:
+#    build: ./proxy
+#    container_name: proxy
+#    networks:
+#      - api
+#    depends_on:
+#      - api
+#    volumes:
+#      - "/home/louis/Documents/CESI/CUBE/back/proxy:/usr/local/etc/haproxy"
+#    ports:
+#      - "80:80"
       - "443:443"
 volumes:
   api_bdd:

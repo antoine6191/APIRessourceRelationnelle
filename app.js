@@ -27,6 +27,7 @@ is_ready.then(()=>{
 
     const app = express();
 
+    app.set('trust proxy',true);
     app.set('view engine', 'ejs');
     app.set('views', 'views');
 
