@@ -8,18 +8,26 @@ Le fichier .env doit se trouver à la racine du projet. Il doit contenir les var
 * DB_PASSWORD : mot de passe de l'utilisateur de connexion à la base
 * DB_NAME : nom de la base de données
 * DB_CONTEXT : nom du moteur de base de données à utiliser pour Sequelize (postgres|mssql|mariadb|mysql)
-* SERVICE_PORT : port en écoute de l'API
+* SERVICE_HTTP_PORT : port en écoute HTTP de l'API
+* SERVICE_HTTPS_PORT : port en écoute HTTPS (sécurisé) de l'API (optionel). Les variables TLS_CERT_FILE et TLS_KEY_FILE sont nécessaire si SERVICE_HTTPS_PORT est défini
+* TLS_CERT_FILE : fichier du certificat TLS (optionel)
+* TLS_KEY_FILE : fichier de clef privée TLS (optionel)
 
 Les variables d'environnement doivent être écrites en majuscule avec des underscores '_'. Le symbole '=' doit coller le nom et la valeur. Les valeurs ne sont pas comprises entre cottes, quelque soit leur type. Chaque variable doit être sur une ligne.
+Exemple :
+`DB_HOST=bdd.example.com`
 
+## Prérequis
+* Docker
+* Docker Compose
 
-# Commandes de lancement
+## Architecture
+L'environnement se déploie à l'aide de Docker. Cet environnement est composé d'un conteneur pour la base de données, un conteneur pour l'API.
+Dans un premier temps, il faut construire les images Docker avec le Dockerfile. En suite, il faut configurer les variables d'environnement comme décrites plus haut. Enfin, on peut lancer les conteneurs.
+La configuration des variables d'environnement se fait directement dans le fichier `docker/docker-compose.yml`. La construction des images et conteneurs se fait par le lancement de la commande `docker-compose up -d` en tant que `root`.
 
-```npm install```
-Installe les dépendances
-
-```npm start```
-Lance le projet
+## Gestion des certiticats
+Les certificats doivent être disposés dans le dossier `cert/`. Les droits en lecture doivent être données uniquement à l'utilisateur qui exécute les conteneurs, à savoir `root`. Les utilisateures *autres* ne doivent pas pouvoir lire le contenu de la clé privée.
 
 # Schéma de données
 

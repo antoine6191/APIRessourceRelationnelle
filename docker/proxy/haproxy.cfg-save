@@ -1,0 +1,53 @@
+global
+      log /dev/log local5 debug
+      #chroot /var/lib/haproxy
+      #stats socket /run/haproxy/admin.sock mode 660 level admin
+      stats timeout 30s
+      user haproxy
+      group haproxy
+      daemon
+
+defaults
+      log global
+      mode tcp
+      option httplog
+      option dontlognull
+      timeout connect 5000
+      timeout client 50000
+      timeout server 50000
+      #errorfile 400 /etc/haproxy/errors/400.http
+
+frontend global_https
+	# Adresse et port d'écoute
+	bind	*:443
+	# Mode du frontend
+	mode	tcp
+	# Option de logs
+	option tcplog
+
+	acl tls req.ssl_hello_type 1
+	tcp-request content accept if tls
+	# Backend par défaut
+	#default_backend cube_api_https_back
+	# ACL pour l'api
+	acl cube_api req.ssl_sni -i cube-api.wapax.fr
+	
+	# Utilisation du backend pour l'API
+	use_backend cube_api_https_back if cube_api
+
+frontend default_http
+	bind	*:80
+	mode	tcp
+	default_backend cube_api_http_back
+
+# Backend HTTP de l'API
+backend cube_api_http_back
+	mode tcp
+	server cube_api api:80
+
+# Backend HTTPS de l'API
+backend cube_api_https_back
+	# Mode du Backend
+	mode tcp
+	# Redirection
+	server cube_api_tls api:443
