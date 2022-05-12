@@ -6,8 +6,7 @@ services:
       dockerfile: api_db_dockerfile
     container_name: api_bdd
     environment:
-      LC_COLLATE: fr_FR
-      LANG: french
+      #LC_COLLATE: fr_FR
       POSTGRES_USER: api
       POSTGRES_PASSWORD: mdppostgres
       POSTGRES_HOST_AUTH_METHOD: md5
