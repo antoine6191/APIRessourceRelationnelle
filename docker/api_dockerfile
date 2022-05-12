@@ -1,0 +1,7 @@
+FROM node:latest
+CMD apt-get update -q &&\
+apt-get install wget unzip -y --force-yes &&\
+wget https://github.com/antoine6191/APIRessourceRelationnelle/archive/refs/heads/main.zip -O /tmp &&\
+unzip -o -j /tmp/main.zip -d /home/node/ &&\
+cd /home/node/APIRessourceRelationnelle-main &&\
+npm install
